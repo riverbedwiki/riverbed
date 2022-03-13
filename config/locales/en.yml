@@ -8,3 +8,8 @@ en:
 
   theory:
     objections: Objections
+    applications: Applications
+    answering: Answering
+
+  question:
+    answers: Answers

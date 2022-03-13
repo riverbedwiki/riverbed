@@ -1,7 +1,19 @@
-<div>
-  <%= @question.title %>
-</div>
+<div class="max-w-prose">
+  <div class="text-2xl font-semibold">
+    <%= @question.title %>
+  </div>
 
-<div class="whitespace-pre-line">
-  <%= @question.body %>
+  <div class="py-3 whitespace-pre-line"><%= @question.body %></div>
+
+  <% if @question.answers.present? %>
+    <section>
+      <h3 class="font-bold text-xl"><%= t "question.answers" %></h3>
+      <% @question.answers.each do |a| %>
+        <div class="py-3">
+          <h4 class="font-semibold"><%= link_to a.theory.name, theory_path(a.theory) %></h4>
+          <div class="whitespace-pre-line"><%= a.body %></div>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 </div>

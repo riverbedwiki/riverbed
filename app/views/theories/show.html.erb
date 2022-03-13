@@ -5,13 +5,27 @@
 
   <div class="py-3 whitespace-pre-line"><%= @theory.body %></div>
 
-  <section>
-    <h3 class="font-bold text-xl"><%= t "theory.objections" %></h3>
-    <% @theory.objections.each do |o| %>
-      <div class="py-3">
-        <h4 class="font-semibold"><%= o.title %></h4>
-        <div class="whitespace-pre-line"><%= o.body %></div>
-      </div>
-    <% end %>
-  </section>
+  <% if @theory.objections.present? %>
+    <section>
+      <h3 class="font-bold text-xl"><%= t "theory.objections" %></h3>
+      <% @theory.objections.each do |o| %>
+        <div class="py-3">
+          <h4 class="font-semibold"><%= o.title %></h4>
+          <div class="whitespace-pre-line"><%= o.body %></div>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% if @theory.answers.present? %>
+    <section>
+      <h3 class="font-bold text-xl"><%= t "theory.applications" %></h3>
+      <% @theory.answers.each do |a| %>
+        <div class="py-3">
+          <h4 class="font-semibold"><%= t "theory.answering" %> <%= link_to a.question.title, question_path(a.question) %></h4>
+          <div class="whitespace-pre-line"><%= a.body %></div>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 </div>
