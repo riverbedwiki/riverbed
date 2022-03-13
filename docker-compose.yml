@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./runtime/log:/rails/log
+    environment:
+      RAILS_DB_HOSTNAME: db
+      RAILS_DB_PASSWORD: none
+      RAILS_SERVE_STATIC_FILES: "true"
+    env_file:
+      ./runtime/docker.env
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0' -e production"
+    depends_on:
+      - db
+  db:
+    image: "postgres:14"
+    volumes:
+      - ./runtime/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: none
+    ports:
+      - "5432:5432" 

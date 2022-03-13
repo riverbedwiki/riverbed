@@ -20,6 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("RAILS_DB_HOSTNAME", "localhost") %>
+  port: 5432
+  username: postgres
+  password: <%= ENV.fetch("RAILS_DB_PASSWORD", "none") %>
 
 development:
   <<: *default
@@ -82,5 +86,5 @@ test:
 production:
   <<: *default
   database: riverbed_production
-  username: riverbed
-  password: <%= ENV["RIVERBED_DATABASE_PASSWORD"] %>
+  #username: riverbed
+  #password: <%= ENV["riverbed_DATABASE_PASSWORD"] %>
