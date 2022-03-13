@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resource :session
 
   resources :theories
+  resources :questions
 end
