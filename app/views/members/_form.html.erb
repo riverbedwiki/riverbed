@@ -1,0 +1,25 @@
+<%= form_with(model: member) do |form| %>
+  <% if member.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit t("general.submit") %>
+  </div>
+<% end %>
