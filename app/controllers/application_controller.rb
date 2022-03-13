@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def require_admin
+    unless current_user&.admin?
+      redirect_to new_session_path
+    end
+  end
 end

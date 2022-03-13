@@ -1,5 +1,5 @@
 class TheoriesController < ApplicationController
-  before_action :require_login, only: %i[ new create edit update ]
+  before_action :require_admin, only: %i[ new create edit update ]
 
   def new
     @theory = Theory.new
