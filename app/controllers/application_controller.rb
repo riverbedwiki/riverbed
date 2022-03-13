@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = :"zh-CN"
+  end
+
   def current_user
     @member ||= Member.find_by(id: session[:user_id])
   end

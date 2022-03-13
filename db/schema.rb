@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_13_100233) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_13_201818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_13_100233) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["username"], name: "index_members_on_username", unique: true
+  end
+
+  create_table "objections", force: :cascade do |t|
+    t.bigint "theory_id", null: false
+    t.string "title", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theory_id"], name: "index_objections_on_theory_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -40,4 +49,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_13_100233) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "objections", "theories"
 end
