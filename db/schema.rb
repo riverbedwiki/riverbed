@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_13_051513) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_215430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acceptance_relations", force: :cascade do |t|
+    t.bigint "perspective_id"
+    t.bigint "proposition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["perspective_id"], name: "index_acceptance_relations_on_perspective_id"
+    t.index ["proposition_id"], name: "index_acceptance_relations_on_proposition_id"
+  end
+
+  create_table "candidate_relations", force: :cascade do |t|
+    t.bigint "dependency_id"
+    t.bigint "proposition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dependency_id"], name: "index_candidate_relations_on_dependency_id"
+    t.index ["proposition_id"], name: "index_candidate_relations_on_proposition_id"
+  end
+
+  create_table "dependencies", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body"
+    t.bigint "proposition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposition_id"], name: "index_dependencies_on_proposition_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name"
@@ -24,6 +51,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_13_051513) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["username"], name: "index_members_on_username", unique: true
+  end
+
+  create_table "perspectives", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "propositions", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
