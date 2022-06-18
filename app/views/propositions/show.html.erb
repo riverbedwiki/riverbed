@@ -1,0 +1,10 @@
+<%= @proposition.title %>
+
+<div>
+  <h2>Dependencies</h2>
+  <% @proposition.dependencies.each do |d| %>
+    <div>
+      <%= d.title %>
+    </div>
+  <% end %>
+</div>

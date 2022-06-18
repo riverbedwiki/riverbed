@@ -1,0 +1,10 @@
+<%= @perspective.title %>
+
+<div>
+  <h2>Accepted Propositions</h2>
+  <% @perspective.accepted_propositions.each do |p| %>
+    <div>
+      <%= p.title %>
+    </div>
+  <% end %>
+</div>

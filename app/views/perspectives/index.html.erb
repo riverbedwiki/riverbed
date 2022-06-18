@@ -1,0 +1,9 @@
+<% @perspectives.each do |p| %>
+  <div>
+    <%= p.title %>
+    <%= link_to 'show', perspective_path(p) %>
+    <%= link_to 'edit', edit_perspective_path(p) %>
+  </div>
+<% end %>
+
+<%= link_to 'new', new_perspective_path %>

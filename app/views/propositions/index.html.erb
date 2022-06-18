@@ -1,0 +1,9 @@
+<% @propositions.each do |p| %>
+  <div>
+    <%= p.title %>
+    <%= link_to 'show', proposition_path(p) %>
+    <%= link_to 'edit', edit_proposition_path(p) %>
+  </div>
+<% end %>
+
+<%= link_to 'new', new_proposition_path %>

@@ -1,0 +1,9 @@
+<%= form_with model: @proposition do |f| %>
+  <div>
+    Title: <%= f.text_field :title %>
+  </div>
+  <div>
+    Body: <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
