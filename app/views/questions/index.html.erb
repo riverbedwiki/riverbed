@@ -1,0 +1,9 @@
+<% @questions.each do |q| %>
+  <div>
+    <%= q.title %>
+    <%= link_to 'show', question_path(q) %>
+    <%= link_to 'edit', edit_question_path(q) %>
+  </div>
+<% end %>
+
+<%= link_to 'new', new_question_path %>
