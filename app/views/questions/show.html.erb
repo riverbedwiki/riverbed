@@ -7,3 +7,16 @@
 </div>
 
 <hr class="my-2">
+
+<div>
+  <h2>Candidate answers</h2>
+  <% @question.answers.each do |a| %>
+    <div>
+      <%= a.reference.title %>
+      <%= link_to 'show', question_answer_path(a) %>
+      <%= link_to 'edit', edit_question_answer_path(a) %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'new', new_question_answer_path(@question) %>

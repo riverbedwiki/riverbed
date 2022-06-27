@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :propositions
   resources :perspectives
-  resources :questions
+  resources :questions do
+    resources :answers
+  end
 end

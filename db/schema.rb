@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_20_165525) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_20_171721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_20_165525) do
     t.datetime "updated_at", null: false
     t.index ["perspective_id"], name: "index_acceptance_relations_on_perspective_id"
     t.index ["proposition_id"], name: "index_acceptance_relations_on_proposition_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id"
+    t.string "reference_type"
+    t.bigint "reference_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["reference_type", "reference_id"], name: "index_answers_on_reference"
   end
 
   create_table "candidate_relations", force: :cascade do |t|

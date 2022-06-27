@@ -1,0 +1,14 @@
+<%= form_with model: [@question, @answer] do |f| %>
+
+  <div>
+    Reference Type: <%= f.text_field :reference_type %>
+  </div>
+  <div>
+    Reference ID: <%= f.text_field :reference_id %>
+  </div>
+
+  <div>
+    Body: <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
