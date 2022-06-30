@@ -17,4 +17,21 @@
   <% end %>
 </div>
 
+<hr class="my-2">
+
+<div>
+  <h2>Arguments</h2>
+  <% @proposition.arguments.each do |a| %>
+    <div>
+      <%= a.type %> argument:
+      <%= a.title %>
+      <%= link_to 'show', proposition_argument_path(@proposition, a) %>
+      <%= link_to 'edit', edit_proposition_argument_path(@proposition, a) %>
+    </div>
+  <% end %>
+  <%= link_to 'new', new_proposition_argument_path(@proposition) %>
+</div>
+
+<hr class="my-2">
+
 <%= link_to 'back to proposition list', propositions_path %>

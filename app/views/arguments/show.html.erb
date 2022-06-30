@@ -1,0 +1,9 @@
+<%= @argument.title %>
+
+<hr class="my-2">
+
+<div>
+  <%= simple_format @argument.body %>
+</div>
+
+<%= link_to 'back to proposition', proposition_path(@proposition) %>

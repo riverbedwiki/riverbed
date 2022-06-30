@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :members
   resource :session
 
-  resources :propositions
+  resources :propositions do
+    resources :arguments
+  end
   resources :perspectives
   resources :questions do
     resources :answers

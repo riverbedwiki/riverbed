@@ -1,0 +1,16 @@
+<%= form_with model: [@proposition, @argument] do |f| %>
+
+  <div>
+    Title: <%= f.text_field :title %>
+  </div>
+
+  <div>
+    Body: <%= f.text_area :body %>
+  </div>
+
+  <div>
+    Type: <%= f.select :type, Argument.types.keys %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
